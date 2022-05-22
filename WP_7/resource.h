@@ -13,12 +13,15 @@
 #define IDC_WP7                         109
 #define IDR_MAINFRAME                   128
 #define IDB_S_0                         131
-#define IDB_BITMAP3                     132
 #define IDB_S_1                         132
 #define IDB_S_2                         133
 #define IDB_TS_0                        134
 #define IDB_TS_1                        135
 #define IDB_TS_2                        136
+#define IDB_acc1                        138
+#define IDB_acc2                        139
+#define IDB_BITMAP4                     140
+#define IDB_acc3                        140
 #define ID_FILENEW                      32771
 #define ID_32772                        32772
 #define ID_shirts                       32773
@@ -42,7 +45,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NO_MFC                     1
-#define _APS_NEXT_RESOURCE_VALUE        137
+#define _APS_NEXT_RESOURCE_VALUE        141
 #define _APS_NEXT_COMMAND_VALUE         32787
 #define _APS_NEXT_CONTROL_VALUE         1000
 #define _APS_NEXT_SYMED_VALUE           110

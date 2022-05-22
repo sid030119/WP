@@ -84,5 +84,14 @@
     <Image Include="티셔츠2단줄임.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="1.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="2.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="3.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
 </Project>
