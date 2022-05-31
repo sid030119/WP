@@ -7,6 +7,7 @@
 
 
 
+
 LRESULT CALLBACK ChildWndProc(HWND hDlg, UINT iMsg,
 	WPARAM wParam, LPARAM lParam);
 LRESULT CALLBACK ChildWndProc2(HWND hDlg, UINT iMsg,
@@ -16,8 +17,8 @@ HINSTANCE hInst;
 
 
 struct accesory {
-	int x;
-	int y;
+	int x=0;
+	int y=0;
 	int acc_num = 0;
 };
 
@@ -117,12 +118,13 @@ LRESULT CALLBACK ChildWndProc(HWND hwnd, UINT iMsg,
 
 		i = 0;
 		while (acc[i].acc_num) {
-			if (acc[i].acc_num == 1)hBitmap = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_acc1));
-			else if (acc[i].acc_num == 2)hBitmap = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_acc2));
-			else if (acc[i].acc_num == 3)hBitmap = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_acc3));
+			for (int j = 0; j < 6; j++)
+			{
+				if (acc[i].acc_num == j + 1)hBitmap = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_acc1 + j));		//else if 문 j for문 식으로 줄였습니다
+			}
 			
 			SelectObject(memdc, hBitmap);
-			StretchBlt(hdc, acc[i].x, acc[i].y, 100, 100, memdc, 0, 0, 100, 100, SRCCOPY);
+			StretchBlt(hdc, acc[i].x, acc[i].y, 100, 100, memdc, 0, 0, 500, 500, SRCCOPY);
 			i++;
 		}
 
@@ -241,13 +243,19 @@ LRESULT CALLBACK ChildWndProc2(HWND hwnd, UINT iMsg,
 		TextOut(hdc, 150, 15, _T("악세서리"), _tcslen(_T("악세서리")));
 		hBitmap = LoadBitmap(hInst,	MAKEINTRESOURCE(IDB_acc1));
 		SelectObject(memdc, hBitmap);
-		StretchBlt(hdc, 50, 60, 100, 100, memdc, 0, 0, 100, 100, SRCCOPY);
+		StretchBlt(hdc, 50, 60, 100, 100, memdc, 0, 0, 500, 500, SRCCOPY);
 		hBitmap = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_acc2));
 		SelectObject(memdc, hBitmap);
-		StretchBlt(hdc, 200, 60, 100, 100, memdc, 0, 0, 100, 100, SRCCOPY);
+		StretchBlt(hdc, 200, 60, 100, 100, memdc, 0, 0, 500, 500, SRCCOPY);
 		hBitmap = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_acc3));
 		SelectObject(memdc, hBitmap);
-		StretchBlt(hdc, 350, 60, 100, 100, memdc, 0, 0, 100, 100, SRCCOPY);
+		StretchBlt(hdc, 350, 60, 100, 100, memdc, 0, 0, 500, 500, SRCCOPY);
+		hBitmap = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_acc4));
+		SelectObject(memdc, hBitmap);
+		StretchBlt(hdc, 50, 130, 100, 100, memdc, 0, 0, 770, 330, SRCCOPY);
+		hBitmap = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_acc5));
+		SelectObject(memdc, hBitmap);
+		StretchBlt(hdc, 200, 130, 100, 100, memdc, 0, 0, 500, 500, SRCCOPY);
 
 		DeleteDC(memdc);
 		
@@ -260,7 +268,8 @@ LRESULT CALLBACK ChildWndProc2(HWND hwnd, UINT iMsg,
 		if (50 <= mx && mx <= 150 && 60 <= my && my <= 160)ACC_NUM = 1;
 		else if (200 <= mx && mx <= 300 && 60 <= my && my <= 160)ACC_NUM = 2;
 		else if (350 <= mx && mx <= 450 && 60 <= my && my <= 160)ACC_NUM = 3;
-
+		else if (50 <= mx && mx <= 150 &&  130<= my && my <= 230)ACC_NUM = 4;
+		else if (200 <= mx && mx <= 300 && 130 <= my && my <= 230)ACC_NUM = 5;
 		if(ACC_NUM!=0)
 		SendMessage(Print, WM_COPYDATA, 0, ACC_NUM);
 

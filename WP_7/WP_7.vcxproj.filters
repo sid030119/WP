@@ -45,9 +45,6 @@
     <Image Include="WP_7.ico">
       <Filter>리소스 파일</Filter>
     </Image>
-    <Image Include="bitmap1.bmp">
-      <Filter>리소스 파일</Filter>
-    </Image>
     <Image Include="..\..\..\..\..\Documents\카카오톡 받은 파일\wp_BMP옷도안\셔츠.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
@@ -84,13 +81,19 @@
     <Image Include="티셔츠2단줄임.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
-    <Image Include="1.bmp">
+    <Image Include="악세_가방끈.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
-    <Image Include="2.bmp">
+    <Image Include="악세_리본.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
-    <Image Include="3.bmp">
+    <Image Include="악세_연세로고1.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="악세_연세로고2.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="악세_주머니.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
   </ItemGroup>

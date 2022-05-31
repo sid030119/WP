@@ -18,10 +18,12 @@
 #define IDB_TS_0                        134
 #define IDB_TS_1                        135
 #define IDB_TS_2                        136
-#define IDB_acc1                        138
-#define IDB_acc2                        139
 #define IDB_BITMAP4                     140
-#define IDB_acc3                        140
+#define IDB_acc1                        141
+#define IDB_acc2                        142
+#define IDB_acc3                        143
+#define IDB_acc4                        144
+#define IDB_acc5						145
 #define ID_FILENEW                      32771
 #define ID_32772                        32772
 #define ID_shirts                       32773
@@ -45,7 +47,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NO_MFC                     1
-#define _APS_NEXT_RESOURCE_VALUE        141
+#define _APS_NEXT_RESOURCE_VALUE        148
 #define _APS_NEXT_COMMAND_VALUE         32787
 #define _APS_NEXT_CONTROL_VALUE         1000
 #define _APS_NEXT_SYMED_VALUE           110
