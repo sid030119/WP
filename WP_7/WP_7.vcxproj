@@ -42,7 +42,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -151,12 +151,46 @@
     <ResourceCompile Include="WP_7.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\..\..\..\Documents\카카오톡 받은 파일\wp_BMP옷도안\셔츠.bmp" />
-    <Image Include="..\..\..\..\..\Documents\카카오톡 받은 파일\wp_BMP옷도안\셔츠1단줄임.bmp" />
-    <Image Include="..\..\..\..\..\Documents\카카오톡 받은 파일\wp_BMP옷도안\셔츠2단줄임.bmp" />
-    <Image Include="..\..\..\..\..\Documents\카카오톡 받은 파일\wp_BMP옷도안\티셔츠.bmp" />
-    <Image Include="..\..\..\..\..\Documents\카카오톡 받은 파일\wp_BMP옷도안\티셔츠1단줄임.bmp" />
-    <Image Include="..\..\..\..\..\Documents\카카오톡 받은 파일\wp_BMP옷도안\티셔츠2단줄임.bmp" />
+    <Image Include="..\..\..\..\Desktop\50\program\WP_7\WP_7\바지.bmp" />
+    <Image Include="..\..\..\..\Desktop\50\program\WP_7\WP_7\바지1단줄임.bmp" />
+    <Image Include="..\..\..\..\Desktop\50\program\WP_7\WP_7\바지2단줄임.bmp" />
+    <Image Include="..\..\..\..\Desktop\50\program\WP_7\WP_7\쓰레기통_CLOSE.bmp" />
+    <Image Include="..\..\..\..\Desktop\50\program\WP_7\WP_7\쓰레기통_OPEN.bmp" />
+    <Image Include="..\..\..\..\Desktop\50\program\WP_7\WP_7\악세_주머니.bmp" />
+    <Image Include="..\..\..\..\Desktop\50\program\WP_7\WP_7\치마.bmp" />
+    <Image Include="..\..\..\..\Desktop\50\program\WP_7\WP_7\치마1단줄임.bmp" />
+    <Image Include="..\..\..\..\Desktop\50\program\WP_7\WP_7\치마2단줄임.bmp" />
+    <Image Include="accesory\쓰레기통_CLOSE.bmp" />
+    <Image Include="accesory\쓰레기통_OPEN.bmp" />
+    <Image Include="accesory\악세_가방끈.bmp" />
+    <Image Include="accesory\악세_따봉뱃지.bmp" />
+    <Image Include="accesory\악세_리본.bmp" />
+    <Image Include="accesory\악세_스마일스티커.bmp" />
+    <Image Include="accesory\악세_연세로고1.bmp" />
+    <Image Include="accesory\악세_연세로고2.bmp" />
+    <Image Include="accesory\악세_주머니.bmp" />
+    <Image Include="accesory\악세_토끼키링.bmp" />
+    <Image Include="clothes\바지.bmp" />
+    <Image Include="clothes\바지1단줄임.bmp" />
+    <Image Include="clothes\바지2단줄임.bmp" />
+    <Image Include="clothes\셔츠.bmp" />
+    <Image Include="clothes\셔츠1단줄임.bmp" />
+    <Image Include="clothes\셔츠2단줄임.bmp" />
+    <Image Include="clothes\치마.bmp" />
+    <Image Include="clothes\치마1단줄임.bmp" />
+    <Image Include="clothes\치마2단줄임.bmp" />
+    <Image Include="clothes\티셔츠.bmp" />
+    <Image Include="clothes\티셔츠1단줄임.bmp" />
+    <Image Include="clothes\티셔츠2단줄임.bmp" />
+    <Image Include="바지.bmp" />
+    <Image Include="바지1단줄임.bmp" />
+    <Image Include="바지2단줄임.bmp" />
+    <Image Include="배경사진.bmp" />
+    <Image Include="쓰레기통_CLOSE.bmp" />
+    <Image Include="쓰레기통_OPEN.bmp" />
+    <Image Include="치마.bmp" />
+    <Image Include="치마1단줄임.bmp" />
+    <Image Include="치마2단줄임.bmp" />
     <Image Include="악세_주머니.bmp" />
     <Image Include="small.ico" />
     <Image Include="WP_7.ico" />

@@ -1,5 +1,5 @@
 ﻿  WP_7.cpp
-C:\Users\Lenovo\Desktop\3-1\윈프\윈프팀플\WP_7\WP_7.cpp(115,67): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Lenovo\Desktop\3-1\윈프\윈프팀플\WP_7\WP_7.cpp(168,13): warning C4244: '=': 'LPARAM'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Lenovo\Desktop\3-1\윈프\윈프팀플\WP_7\WP_7.cpp(243,72): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  WP_7.vcxproj -> C:\Users\Lenovo\Desktop\3-1\윈프\윈프팀플\x64\Debug\WP_7.exe
+C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(119,67): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(209,13): warning C4244: '=': 'LPARAM'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(301,72): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  WP_7.vcxproj -> C:\Users\sid03\Documents\GitHub\WP\x64\Debug\WP_7.exe

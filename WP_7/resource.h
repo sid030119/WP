@@ -23,7 +23,22 @@
 #define IDB_acc2                        142
 #define IDB_acc3                        143
 #define IDB_acc4                        144
-#define IDB_acc5						145
+#define IDB_acc5                        145
+#define IDB_acc6                        146
+#define IDB_acc7                        147
+#define IDB_acc8                        148
+#define IDB_P_0                         149
+#define IDB_P_1                         150
+#define IDB_P_2                         151
+#define IDB_TRASH_OFF                   152
+#define IDB_TRASH_ON                    153
+#define IDB_SK_0                        154
+#define IDB_SK_1                        155
+#define IDB_BITMAP9                     156
+#define IDB_SK_2                        156
+#define IDB_BITMAP3                     159
+#define IDB_BITMAP1                     160
+#define IDB_BG                          160
 #define ID_FILENEW                      32771
 #define ID_32772                        32772
 #define ID_shirts                       32773
@@ -40,6 +55,20 @@
 #define ID_TS_0                         32784
 #define ID_TS_1                         32785
 #define ID_TS_2                         32786
+#define ID_32787                        32787
+#define ID_32788                        32788
+#define ID_32789                        32789
+#define ID_32790                        32790
+#define ID_32791                        32791
+#define ID_32792                        32792
+#define ID_32793                        32793
+#define ID_32794                        32794
+#define ID_P_0                          32795
+#define ID_P_1                          32796
+#define ID_P_2                          32797
+#define ID_SK_0                         32798
+#define ID_SK_1                         32799
+#define ID_SK_2                         32800
 #define IDC_STATIC                      -1
 
 // Next default values for new objects
@@ -47,8 +76,8 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NO_MFC                     1
-#define _APS_NEXT_RESOURCE_VALUE        148
-#define _APS_NEXT_COMMAND_VALUE         32787
+#define _APS_NEXT_RESOURCE_VALUE        161
+#define _APS_NEXT_COMMAND_VALUE         32801
 #define _APS_NEXT_CONTROL_VALUE         1000
 #define _APS_NEXT_SYMED_VALUE           110
 #endif
