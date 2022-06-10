@@ -7,6 +7,8 @@
 #include <wingdi.h>
 
 #pragma comment(lib,"msimg32.lib")
+#pragma comment(lib,"winmm.lib")
+
 
 
 LRESULT CALLBACK ChildWndProc(HWND hDlg, UINT iMsg,
@@ -261,7 +263,10 @@ LRESULT CALLBACK ChildWndProc(HWND hwnd, UINT iMsg,
 		}
 		break;
 
+	case WM_CREATE:
+		PlaySound(MAKEINTRESOURCE(IDR_WAVE1),hInst, SND_RESOURCE | SND_ASYNC);
 
+		return 0;
 
 
 	case WM_DESTROY:

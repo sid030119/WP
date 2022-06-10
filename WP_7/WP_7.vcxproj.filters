@@ -199,4 +199,9 @@
       <Filter>리소스 파일</Filter>
     </Image>
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="메이플스토리-엘리니아 (mp3cut.net).wav">
+      <Filter>리소스 파일</Filter>
+    </Media>
+  </ItemGroup>
 </Project>
