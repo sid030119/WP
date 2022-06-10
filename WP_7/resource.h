@@ -37,7 +37,6 @@
 #define IDB_BITMAP9                     156
 #define IDB_SK_2                        156
 #define IDB_BITMAP3                     159
-#define IDB_BITMAP1                     160
 #define IDB_BG                          160
 #define IDR_WAVE1                       161
 #define ID_FILENEW                      32771
