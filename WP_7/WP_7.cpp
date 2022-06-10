@@ -406,12 +406,12 @@ void SubViewBitmap(HDC hdc, HDC memdc) {
 
 void SubViewFont(HDC hdc) {
 	HFONT font, oldfont;
-	char fontaddress[] = "C:\\Users\\mell0\\AppData\\Local\\Microsoft\\Windows\\Fonts\\CookieRun Black.TTF";
+	char fontaddress[] = "COOKIERUN BLACK.TTF";
 
 	AddFontResource(fontaddress);
 	SendMessage(HWND_BROADCAST, WM_FONTCHANGE, 0, 0);
 
-	font = CreateFont(30, 0, 0, 0, FW_BOLD, 0, 0, 0, HANGUL_CHARSET, 3, 2, 1, VARIABLE_PITCH | FF_ROMAN, TEXT("CookieRun Black"));
+	font = CreateFont(30, 0, 0, 0, FW_BOLD, 0, 0, 0, HANGUL_CHARSET, 3, 2, 1, VARIABLE_PITCH | FF_ROMAN, TEXT("COOKIERUN BLACK"));
 	oldfont = (HFONT)SelectObject(hdc, font);
 
 	SetBkMode(hdc, TRANSPARENT);
