@@ -7,23 +7,26 @@
 #include "resource.h"
 #include <string>
 #include <wingdi.h>
-
+#include <atlstr.h>
 
 #pragma comment(lib,"msimg32.lib")
 
 #pragma comment(lib,"winmm.lib")
 
+#define PRINT_X 1040
+#define PRINT_Y 800
+#define OPTION_X 500
+#define OPTION_Y 800
 
+//함수 선언부
 LRESULT CALLBACK ChildWndProc(HWND hDlg, UINT iMsg,
 	WPARAM wParam, LPARAM lParam);
 LRESULT CALLBACK ChildWndProc2(HWND hDlg, UINT iMsg,
 	WPARAM wParam, LPARAM lParam);
-HINSTANCE hInst;
 
 HBITMAP ScreenCapture();
 void SaveBitmap(HBITMAP hbit, char* Path);
-HBITMAP g_hBit;
-static HBITMAP hBase;
+
 
 
 struct accesory {
@@ -31,6 +34,14 @@ struct accesory {
 	int y = 0;
 	int acc_num = 0;
 };
+
+//전역 변수
+HINSTANCE hInst;
+HBITMAP g_hBit;
+static HBITMAP hBase;
+int PRICE_CLOTHES = 0;
+int COST_ACC = 0;
+const int PRICE_ACC[9] = {0, 3000,2000,5000,5000,4000, 1500, 1500, 7000};
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	LPSTR lpszCmdLine, int nCmdShow)
@@ -65,8 +76,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 		WS_OVERLAPPEDWINDOW,
 		0,
 		0,
-		840,
-		600,
+		PRINT_X,
+		PRINT_Y,
 		NULL,
 		NULL,
 		hInstance,
@@ -77,10 +88,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 		_T("Option"),
 		_T("Option"),
 		WS_OVERLAPPEDWINDOW,
-		840,
+		PRINT_X,
 		0,
-		500,
-		600,
+		OPTION_X,
+		OPTION_Y,
 		NULL,
 		NULL,
 		hInstance,
@@ -99,12 +110,13 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 }
 
 BOOL inTrashcan(int mx, int my) {
-	return (120 <= mx && mx < 220 && 370 <= my && my <= 470);
+	return ((PRINT_X / 8)  <= mx && mx < (PRINT_X / 8)+100 && (PRINT_Y / 2) + 150 <= my && my <= (PRINT_Y / 2) + 250);
 }
 
 LRESULT CALLBACK ChildWndProc(HWND hwnd, UINT iMsg,
 	WPARAM wParam, LPARAM lParam)
 {
+
 	HDC hdc, memdc;
 	PAINTSTRUCT ps;
 	static HBITMAP hBitmap, hBG;
@@ -114,6 +126,7 @@ LRESULT CALLBACK ChildWndProc(HWND hwnd, UINT iMsg,
 	static bool CanTrash = false;
 
 	static accesory acc[20];
+
 	static int acc_cnt = 0;
 	static int acc_num = 0;
 	int i = 0;
@@ -128,17 +141,21 @@ LRESULT CALLBACK ChildWndProc(HWND hwnd, UINT iMsg,
 
 	AddFontResource(fontaddress);
 
+	HWND Option = ::FindWindow(NULL, "Option");
 
 	switch (iMsg)
 	{
+
 	case WM_PAINT:
 		hdc = BeginPaint(hwnd, &ps);
 		memdc = CreateCompatibleDC(hdc);
 		hBG = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_BG));
 
+
+
 		//배경 이미지 출력
 		SelectObject(memdc, hBG);
-		StretchBlt(hdc, 0, 0, 840, 543, memdc, 0, 0, 605, 432, SRCCOPY);
+		StretchBlt(hdc, 0, 0, PRINT_X, PRINT_Y-57, memdc, 0, 0, 605, 432, SRCCOPY);
 
 		//펜 설정 및 펜사용 부분
 		HPEN hPen, oldPen;
@@ -175,7 +192,7 @@ LRESULT CALLBACK ChildWndProc(HWND hwnd, UINT iMsg,
 
 		SelectObject(memdc, hBase);
 
-		TransparentBlt(hdc, 250, 100, 350, 350, memdc, 0, 0, 800, 700, RGB(42, 255, 0));
+		TransparentBlt(hdc, (PRINT_X/2)-200, (PRINT_Y/2)-200, 400, 400, memdc, 0, 0, 800, 700, RGB(42, 255, 0));
 
 		//쓰레기통 출력
 		if (CanTrash)
@@ -184,7 +201,7 @@ LRESULT CALLBACK ChildWndProc(HWND hwnd, UINT iMsg,
 			hBitmap = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_TRASH_OFF));
 
 		SelectObject(memdc, hBitmap);
-		TransparentBlt(hdc, 120, 370, 100, 100, memdc, 0, 0, 500, 500, RGB(42, 255, 0));
+		TransparentBlt(hdc, (PRINT_X/8), (PRINT_Y/2)+150, 100, 100, memdc, 0, 0, 500, 500, RGB(42, 255, 0));
 
 		//악세서리들 출력
 		i = 0;
@@ -208,59 +225,83 @@ LRESULT CALLBACK ChildWndProc(HWND hwnd, UINT iMsg,
 		case ID_S_0:
 			hBase = LoadBitmap(hInst,
 				MAKEINTRESOURCE(IDB_S_0));
+			PRICE_CLOTHES = 25000;
 			InvalidateRgn(hwnd, NULL, true);
+			InvalidateRgn(Option, NULL, true);
 			break;
 		case ID_S_1:
 			hBase = LoadBitmap(hInst,
 				MAKEINTRESOURCE(IDB_S_1));
+			PRICE_CLOTHES = 25000;
 			InvalidateRgn(hwnd, NULL, true);
+			InvalidateRgn(Option, NULL, true);
 			break;
 		case ID_S_2:
 			hBase = LoadBitmap(hInst,
 				MAKEINTRESOURCE(IDB_S_2));
+			PRICE_CLOTHES = 25000;
 			InvalidateRgn(hwnd, NULL, true);
+			InvalidateRgn(Option, NULL, true);
 			break;
 		case ID_TS_0:
 			hBase = LoadBitmap(hInst,
 				MAKEINTRESOURCE(IDB_TS_0));
+			PRICE_CLOTHES = 10000;
 			InvalidateRgn(hwnd, NULL, true);
+			InvalidateRgn(Option, NULL, true);
 			break;
 		case ID_TS_1:
 			hBase = LoadBitmap(hInst,
 				MAKEINTRESOURCE(IDB_TS_1));
+			PRICE_CLOTHES = 10000;
 			InvalidateRgn(hwnd, NULL, true);
+			InvalidateRgn(Option, NULL, true);
 		case ID_TS_2:
 			hBase = LoadBitmap(hInst,
 				MAKEINTRESOURCE(IDB_TS_2));
+			PRICE_CLOTHES = 10000;
 			InvalidateRgn(hwnd, NULL, true);
+			InvalidateRgn(Option, NULL, true);
 			break;
 		case ID_P_0:
 			hBase = LoadBitmap(hInst,
 				MAKEINTRESOURCE(IDB_P_0));
+			PRICE_CLOTHES = 35000;
 			InvalidateRgn(hwnd, NULL, true);
+			InvalidateRgn(Option, NULL, true);
 			break;
 		case ID_P_1:
 			hBase = LoadBitmap(hInst,
 				MAKEINTRESOURCE(IDB_P_1));
+			PRICE_CLOTHES = 35000;
 			InvalidateRgn(hwnd, NULL, true);
+			InvalidateRgn(Option, NULL, true);
 		case ID_P_2:
 			hBase = LoadBitmap(hInst,
 				MAKEINTRESOURCE(IDB_P_2));
+			PRICE_CLOTHES = 35000;
 			InvalidateRgn(hwnd, NULL, true);
+			InvalidateRgn(Option, NULL, true);
 			break;
 		case ID_SK_0:
 			hBase = LoadBitmap(hInst,
 				MAKEINTRESOURCE(IDB_SK_0));
+			PRICE_CLOTHES = 30000;
 			InvalidateRgn(hwnd, NULL, true);
+			InvalidateRgn(Option, NULL, true);
 			break;
 		case ID_SK_1:
 			hBase = LoadBitmap(hInst,
 				MAKEINTRESOURCE(IDB_SK_1));
+			PRICE_CLOTHES = 30000;
 			InvalidateRgn(hwnd, NULL, true);
+			InvalidateRgn(Option, NULL, true);
 		case ID_SK_2:
 			hBase = LoadBitmap(hInst,
 				MAKEINTRESOURCE(IDB_SK_2));
+			PRICE_CLOTHES = 30000;
 			InvalidateRgn(hwnd, NULL, true);
+			InvalidateRgn(Option, NULL, true);
 			break;
 
 
@@ -282,12 +323,13 @@ LRESULT CALLBACK ChildWndProc(HWND hwnd, UINT iMsg,
 		}
 
 	case WM_COPYDATA:
-		acc_num = lParam;
+		acc_num = lParam;			//악세서리 추가
 		if (acc_num != 0 && acc_cnt < 19) {
 			acc[acc_cnt].acc_num = acc_num;
 			acc[acc_cnt].x = rand() % 440 + 200;
 			acc[acc_cnt].y = rand() % 300 + 100;
 			acc_cnt++;
+			COST_ACC += PRICE_ACC[acc_num];			//악세서리가 추가되어서 가격이 오름
 		}
 		InvalidateRgn(hwnd, NULL, true);
 		break;
@@ -310,6 +352,7 @@ LRESULT CALLBACK ChildWndProc(HWND hwnd, UINT iMsg,
 		my = HIWORD(lParam);
 
 		if (inTrashcan(mx, my) && Selection) {
+			SendMessage(Option, WM_COPYDATA, 0, acc[acc_num].acc_num);
 			acc[acc_num].acc_num = acc[acc_cnt - 1].acc_num;
 			acc[acc_num].x = acc[acc_cnt - 1].x;
 			acc[acc_num].y = acc[acc_cnt - 1].y;
@@ -383,7 +426,7 @@ LRESULT CALLBACK ChildWndProc2(HWND hwnd, UINT iMsg,
 
 		DeleteDC(memdc);
 		EndPaint(hwnd, &ps);
-
+		break;
 
 	case WM_LBUTTONDOWN:
 		mx = LOWORD(lParam);
@@ -396,12 +439,23 @@ LRESULT CALLBACK ChildWndProc2(HWND hwnd, UINT iMsg,
 		else if (140 <= mx && mx <= 240 && 160 <= my && my <= 260)ACC_NUM = 6;
 		else if (245 <= mx && mx <= 350 && 160 <= my && my <= 260)ACC_NUM = 7;
 		else if (355 <= mx && mx <= 460 && 160 <= my && my <= 260)ACC_NUM = 8;
-		else if (35 <= mx && mx <= 135 && 320 <= my && my <= 370)CHANGECOLOR(RGB(255, 0, 0));
-		else if (140 <= mx && mx <= 240 && 320 <= my && my <= 370)CHANGECOLOR(RGB(0, 255, 0));
-		else if (245 <= mx && mx <= 350 && 320 <= my && my <= 370)CHANGECOLOR(RGB(0, 0, 255));
-		else if (355 <= mx && mx <= 460 && 320 <= my && my <= 370)CHANGECOLOR(RGB(255, 255, 255));
+		else if (35 <= mx && mx <= 135 && 325 <= my && my <= 375)CHANGECOLOR(RGB(240, 80, 80));
+		else if (140 <= mx && mx <= 240 && 325 <= my && my <= 375)CHANGECOLOR(RGB(0, 255, 0));
+		else if (245 <= mx && mx <= 350 && 325 <= my && my <= 375)CHANGECOLOR(RGB(127, 255, 212));
+		else if (355 <= mx && mx <= 460 && 325 <= my && my <= 375)CHANGECOLOR(RGB(255, 255, 255));
+		else if (35 <= mx && mx <= 135 && 380 <= my && my <= 430)CHANGECOLOR(RGB(211, 211, 211));
+		else if (140 <= mx && mx <= 240 && 380 <= my && my <= 430)CHANGECOLOR(RGB(255, 215, 0));
+		else if (245 <= mx && mx <= 350 && 380 <= my && my <= 430)CHANGECOLOR(RGB(238, 82, 238));
+		else if (355 <= mx && mx <= 460 && 380 <= my && my <= 430)CHANGECOLOR(RGB(255, 255, 240));
 
 		SendMessage(Print, WM_COPYDATA, 0, ACC_NUM);
+		InvalidateRgn(hwnd, NULL, true);
+
+		break;
+
+	case WM_COPYDATA:
+		COST_ACC -= PRICE_ACC[lParam];
+		InvalidateRgn(hwnd, NULL, true);
 
 		break;
 	case WM_DESTROY:
@@ -430,13 +484,24 @@ void SubViewFrame(HDC hdc) {
 	}
 
 	//염색
-	Rectangle(hdc, 35, 270, 450, 310);
+	Rectangle(hdc, 35, 280, 450, 320);
 
-	for (int y = 0; y < 1; y++) {
+	for (int y = 0; y < 2; y++) {
 		for (int x = 0; x < 4; x++) {
-			Rectangle(hdc, 35 + 105 * x, 315 + 105 * y, 135 + 105 * x, 365 + 105 * y);
+			Rectangle(hdc, 35 + 105 * x, 325 + 55 * y, 135 + 105 * x, 375 + 55 * y);
 		}
 	}
+
+	//계산
+	Rectangle(hdc, 35, 450, 450, 490);
+
+	for (int y = 0; y < 2; y++) {
+		for (int x = 0; x < 2; x++) {
+			Rectangle(hdc, 35 + 210 * x, 495 + 45 * y, 240 + 210* x, 535 + 45 * y);
+		}
+	}
+
+	Rectangle(hdc, 200, 600, 450, 650);
 
 
 
@@ -496,11 +561,29 @@ void SubViewFont(HDC hdc) {
 	SetTextColor(hdc, RGB(125, 88, 84));
 	TextOut(hdc, 200, 15, _T("악세서리"), _tcslen(_T("악세서리")));
 
-	TextOut(hdc, 200, 275, _T("염색"), _tcslen(_T("염색")));
-	TextOut(hdc, 65, 325, _T("Red"), _tcslen(_T("Red")));
-	TextOut(hdc, 155, 325, _T("Green"), _tcslen(_T("Green")));
-	TextOut(hdc, 270, 325, _T("Blue"), _tcslen(_T("Blue")));
-	TextOut(hdc, 365, 325, _T("White"), _tcslen(_T("White")));
+	TextOut(hdc, 220, 285, _T("염색"), _tcslen(_T("염색")));
+
+	TextOut(hdc, 60, 335, _T("Coral"), _tcslen(_T("Coral")));
+	TextOut(hdc, 160, 335, _T("Lime"), _tcslen(_T("Lime")));
+	TextOut(hdc, 265, 335, _T("Aqua"), _tcslen(_T("Aqua")));
+	TextOut(hdc, 365, 335, _T("White"), _tcslen(_T("White")));
+	TextOut(hdc, 60, 390, _T("Grey"), _tcslen(_T("Grey")));
+	TextOut(hdc, 160, 390, _T("Gold"), _tcslen(_T("Gold")));
+	TextOut(hdc, 265, 390, _T("Violet"), _tcslen(_T("Violet")));
+	TextOut(hdc, 370, 390, _T("Ivory"), _tcslen(_T("Ivory")));
+
+	TextOut(hdc, 220, 455, _T("계산"), _tcslen(_T("계산")));
+	TextOut(hdc, 100, 500, _T("의상 비용"), _tcslen(_T("의상 비용")));
+	TextOut(hdc, 290, 500, _T("악세서리 비용"), _tcslen(_T("악세서리 비용")));
+	CString str, str1, str2;
+	str.Format("%d", PRICE_CLOTHES);
+	str1.Format("%d", COST_ACC);
+	str2.Format("%d", PRICE_CLOTHES + COST_ACC);
+	SetTextAlign(hdc, TA_RIGHT);
+	TextOut(hdc, 200, 545, str, _tcslen(str));
+	TextOut(hdc, 410, 545, str1, _tcslen(str1));
+	TextOut(hdc, 400, 610, str2, _tcslen(str2));
+
 
 	SelectObject(hdc, oldfont);
 	DeleteObject(font);
@@ -508,8 +591,8 @@ void SubViewFont(HDC hdc) {
 }
 
 HBITMAP ScreenCapture() {
-	int width = 500;
-	int height = 430;
+	int width = 750;
+	int height = 600;
 	// 화면전체 DC를 얻는다
 	HDC hScreenDC = CreateDC("DISPLAY", NULL, NULL, NULL);
 	// device context에 넣기
@@ -520,7 +603,7 @@ HBITMAP ScreenCapture() {
 	// 새로운 비트맵 생성
 	HBITMAP hOldBitmap = (HBITMAP)SelectObject(hMemoryDC, hBitmap);
 
-	BitBlt(hMemoryDC, 0, 0, width, height, hScreenDC, 285, 190, SRCCOPY);		//스크린샷을 할 특정 위치
+	BitBlt(hMemoryDC, 0, 0, width, height, hScreenDC, 300, 250, SRCCOPY);		//스크린샷을 할 특정 위치
 	hBitmap = (HBITMAP)SelectObject(hMemoryDC, hOldBitmap);
 
 	DeleteDC(hMemoryDC);
