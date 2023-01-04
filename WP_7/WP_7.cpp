@@ -137,7 +137,7 @@ LRESULT CALLBACK ChildWndProc(HWND hwnd, UINT iMsg,
 	char lpstrFile[MAX_PATH] = "";
 
 	HFONT font, oldfont;
-	char fontaddress[] = "COOKIERUN BLACK.TTF";
+	LPCWSTR fontaddress[] = _T("COOKIERUN BLACK.TTF");
 
 	AddFontResource(fontaddress);
 
@@ -591,8 +591,8 @@ void SubViewFont(HDC hdc) {
 }
 
 HBITMAP ScreenCapture() {
-	int width = 750;
-	int height = 600;
+	int width = PRINT_X;
+	int height = PRINT_Y;
 	// 화면전체 DC를 얻는다
 	HDC hScreenDC = CreateDC("DISPLAY", NULL, NULL, NULL);
 	// device context에 넣기
@@ -603,7 +603,7 @@ HBITMAP ScreenCapture() {
 	// 새로운 비트맵 생성
 	HBITMAP hOldBitmap = (HBITMAP)SelectObject(hMemoryDC, hBitmap);
 
-	BitBlt(hMemoryDC, 0, 0, width, height, hScreenDC, 300, 250, SRCCOPY);		//스크린샷을 할 특정 위치
+	BitBlt(hMemoryDC, 0, 0, width, height, hScreenDC, 400,400, SRCCOPY);		//스크린샷을 할 특정 위치
 	hBitmap = (HBITMAP)SelectObject(hMemoryDC, hOldBitmap);
 
 	DeleteDC(hMemoryDC);

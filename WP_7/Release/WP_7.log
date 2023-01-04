@@ -1,0 +1,42 @@
+﻿  WP_7.cpp
+C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(142,29): error C2664: 'int AddFontResourceW(LPCWSTR)': 인수 1을(를) 'const char [20]'에서 'LPCWSTR'(으)로 변환할 수 없습니다.
+C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(142,18): message : 가리킨 형식이 관련이 없습니다. 변환하려면 reinterpret_cast, C 스타일 캐스트 또는 괄호가 있는 함수 스타일 캐스트가 필요합니다.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\wingdi.h(3732,22): message : 'AddFontResourceW' 선언을 참조하십시오.
+C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(144,43): error C2664: 'HWND FindWindowW(LPCWSTR,LPCWSTR)': 인수 2을(를) 'const char [7]'에서 'LPCWSTR'(으)로 변환할 수 없습니다.
+C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(144,35): message : 가리킨 형식이 관련이 없습니다. 변환하려면 reinterpret_cast, C 스타일 캐스트 또는 괄호가 있는 함수 스타일 캐스트가 필요합니다.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winuser.h(10057,1): message : 'FindWindowW' 선언을 참조하십시오.
+C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(188,33): error C2664: 'BOOL RemoveFontResourceW(LPCWSTR)': 인수 1을(를) 'const char [20]'에서 'LPCWSTR'(으)로 변환할 수 없습니다.
+C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(188,22): message : 가리킨 형식이 관련이 없습니다. 변환하려면 reinterpret_cast, C 스타일 캐스트 또는 괄호가 있는 함수 스타일 캐스트가 필요합니다.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\wingdi.h(4526,23): message : 'RemoveFontResourceW' 선언을 참조하십시오.
+C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(312,41): error C2440: '=': 'const char [17]'에서 'LPCWSTR'(으)로 변환할 수 없습니다.
+C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(312,22): message : 가리킨 형식이 관련이 없습니다. 변환하려면 reinterpret_cast, C 스타일 캐스트 또는 괄호가 있는 함수 스타일 캐스트가 필요합니다.
+C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(313,29): error C2440: '=': 'char [260]'에서 'LPWSTR'(으)로 변환할 수 없습니다.
+C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(313,20): message : 가리킨 형식이 관련이 없습니다. 변환하려면 reinterpret_cast, C 스타일 캐스트 또는 괄호가 있는 함수 스타일 캐스트가 필요합니다.
+C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(315,27): error C2440: '=': 'const char [4]'에서 'LPCWSTR'(으)로 변환할 수 없습니다.
+C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(315,22): message : 가리킨 형식이 관련이 없습니다. 변환하려면 reinterpret_cast, C 스타일 캐스트 또는 괄호가 있는 함수 스타일 캐스트가 필요합니다.
+C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(316,36): error C2440: '=': 'const char [10]'에서 'LPCWSTR'(으)로 변환할 수 없습니다.
+C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(316,21): message : 가리킨 형식이 관련이 없습니다. 변환하려면 reinterpret_cast, C 스타일 캐스트 또는 괄호가 있는 함수 스타일 캐스트가 필요합니다.
+C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(411,41): error C2664: 'HWND FindWindowW(LPCWSTR,LPCWSTR)': 인수 2을(를) 'const char [6]'에서 'LPCWSTR'(으)로 변환할 수 없습니다.
+C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(411,34): message : 가리킨 형식이 관련이 없습니다. 변환하려면 reinterpret_cast, C 스타일 캐스트 또는 괄호가 있는 함수 스타일 캐스트가 필요합니다.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winuser.h(10057,1): message : 'FindWindowW' 선언을 참조하십시오.
+C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(554,29): error C2664: 'int AddFontResourceW(LPCWSTR)': 인수 1을(를) 'char [20]'에서 'LPCWSTR'(으)로 변환할 수 없습니다.
+C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(554,18): message : 가리킨 형식이 관련이 없습니다. 변환하려면 reinterpret_cast, C 스타일 캐스트 또는 괄호가 있는 함수 스타일 캐스트가 필요합니다.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\wingdi.h(3732,22): message : 'AddFontResourceW' 선언을 참조하십시오.
+C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(579,32): error C2664: 'void ATL::CStringT<wchar_t,ATL::StrTraitATL<wchar_t,ATL::ChTraitsCRT<wchar_t>>>::Format(const wchar_t *,...)': 인수 1을(를) 'const char [3]'에서 'const wchar_t *'(으)로 변환할 수 없습니다.
+C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(579,13): message : 가리킨 형식이 관련이 없습니다. 변환하려면 reinterpret_cast, C 스타일 캐스트 또는 괄호가 있는 함수 스타일 캐스트가 필요합니다.
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.31.31103\atlmfc\include\cstringt.h(2186,15): message : 'ATL::CStringT<wchar_t,ATL::StrTraitATL<wchar_t,ATL::ChTraitsCRT<wchar_t>>>::Format' 선언을 참조하십시오.
+C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(580,28): error C2664: 'void ATL::CStringT<wchar_t,ATL::StrTraitATL<wchar_t,ATL::ChTraitsCRT<wchar_t>>>::Format(const wchar_t *,...)': 인수 1을(를) 'const char [3]'에서 'const wchar_t *'(으)로 변환할 수 없습니다.
+C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(580,14): message : 가리킨 형식이 관련이 없습니다. 변환하려면 reinterpret_cast, C 스타일 캐스트 또는 괄호가 있는 함수 스타일 캐스트가 필요합니다.
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.31.31103\atlmfc\include\cstringt.h(2186,15): message : 'ATL::CStringT<wchar_t,ATL::StrTraitATL<wchar_t,ATL::ChTraitsCRT<wchar_t>>>::Format' 선언을 참조하십시오.
+C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(581,44): error C2664: 'void ATL::CStringT<wchar_t,ATL::StrTraitATL<wchar_t,ATL::ChTraitsCRT<wchar_t>>>::Format(const wchar_t *,...)': 인수 1을(를) 'const char [3]'에서 'const wchar_t *'(으)로 변환할 수 없습니다.
+C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(581,14): message : 가리킨 형식이 관련이 없습니다. 변환하려면 reinterpret_cast, C 스타일 캐스트 또는 괄호가 있는 함수 스타일 캐스트가 필요합니다.
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.31.31103\atlmfc\include\cstringt.h(2186,15): message : 'ATL::CStringT<wchar_t,ATL::StrTraitATL<wchar_t,ATL::ChTraitsCRT<wchar_t>>>::Format' 선언을 참조하십시오.
+C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(590,32): error C2664: 'BOOL RemoveFontResourceW(LPCWSTR)': 인수 1을(를) 'char [20]'에서 'LPCWSTR'(으)로 변환할 수 없습니다.
+C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(590,21): message : 가리킨 형식이 관련이 없습니다. 변환하려면 reinterpret_cast, C 스타일 캐스트 또는 괄호가 있는 함수 스타일 캐스트가 필요합니다.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\wingdi.h(4526,23): message : 'RemoveFontResourceW' 선언을 참조하십시오.
+C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(597,54): error C2664: 'HDC CreateDCW(LPCWSTR,LPCWSTR,LPCWSTR,const DEVMODEW *)': 인수 1을(를) 'const char [8]'에서 'LPCWSTR'(으)로 변환할 수 없습니다.
+C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(597,27): message : 가리킨 형식이 관련이 없습니다. 변환하려면 reinterpret_cast, C 스타일 캐스트 또는 괄호가 있는 함수 스타일 캐스트가 필요합니다.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\wingdi.h(3761,26): message : 'CreateDCW' 선언을 참조하십시오.
+C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(673,93): error C2664: 'HANDLE CreateFileW(LPCWSTR,DWORD,DWORD,LPSECURITY_ATTRIBUTES,DWORD,DWORD,HANDLE)': 인수 1을(를) 'char *'에서 'LPCWSTR'(으)로 변환할 수 없습니다.
+C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(673,21): message : 가리킨 형식이 관련이 없습니다. 변환하려면 reinterpret_cast, C 스타일 캐스트 또는 괄호가 있는 함수 스타일 캐스트가 필요합니다.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\fileapi.h(94,1): message : 'CreateFileW' 선언을 참조하십시오.
