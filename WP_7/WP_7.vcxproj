@@ -162,6 +162,7 @@
     <Image Include="..\..\..\..\Desktop\50\program\WP_7\WP_7\치마.bmp" />
     <Image Include="..\..\..\..\Desktop\50\program\WP_7\WP_7\치마1단줄임.bmp" />
     <Image Include="..\..\..\..\Desktop\50\program\WP_7\WP_7\치마2단줄임.bmp" />
+    <Image Include="2.bmp" />
     <Image Include="accesory\쓰레기통_CLOSE.bmp" />
     <Image Include="accesory\쓰레기통_OPEN.bmp" />
     <Image Include="accesory\악세_가방끈.bmp" />
@@ -172,6 +173,7 @@
     <Image Include="accesory\악세_연세로고2.bmp" />
     <Image Include="accesory\악세_주머니.bmp" />
     <Image Include="accesory\악세_토끼키링.bmp" />
+    <Image Include="clothes\bitmap1.bmp" />
     <Image Include="clothes\바지.bmp" />
     <Image Include="clothes\바지1단줄임.bmp" />
     <Image Include="clothes\바지2단줄임.bmp" />

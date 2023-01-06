@@ -198,6 +198,12 @@
     <Image Include="배경사진.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="clothes\bitmap1.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="2.bmp">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Media Include="메이플스토리-엘리니아 (mp3cut.net).wav">

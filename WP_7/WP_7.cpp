@@ -13,9 +13,9 @@
 
 #pragma comment(lib,"winmm.lib")
 
-#define PRINT_X 1040
+#define PRINT_X 1200
 #define PRINT_Y 800
-#define OPTION_X 500
+#define OPTION_X 501
 #define OPTION_Y 800
 
 //함수 선언부
@@ -39,7 +39,7 @@ struct accesory {
 HINSTANCE hInst;
 HBITMAP g_hBit;
 static HBITMAP hBase;
-int PRICE_CLOTHES = 0;
+int PRICE_CLOTHES = 25000;
 int COST_ACC = 0;
 const int PRICE_ACC[9] = {0, 3000,2000,5000,5000,4000, 1500, 1500, 7000};
 
@@ -66,7 +66,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	WndClass2 = WndClass;
 	WndClass2.lpszMenuName = NULL;
 	WndClass2.lpszClassName = _T("Option");
-	WndClass2.hbrBackground = CreateSolidBrush(RGB(99, 49, 34));
+	WndClass2.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);
 	WndClass2.lpfnWndProc = ChildWndProc2;
 	if (!RegisterClass(&WndClass2))return 1;
 
@@ -88,7 +88,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 		_T("Option"),
 		_T("Option"),
 		WS_OVERLAPPEDWINDOW,
-		PRINT_X,
+		PRINT_X-15,
 		0,
 		OPTION_X,
 		OPTION_Y,
@@ -137,9 +137,6 @@ LRESULT CALLBACK ChildWndProc(HWND hwnd, UINT iMsg,
 	char lpstrFile[MAX_PATH] = "";
 
 	HFONT font, oldfont;
-	LPCWSTR fontaddress[] = _T("COOKIERUN BLACK.TTF");
-
-	AddFontResource(fontaddress);
 
 	HWND Option = ::FindWindow(NULL, "Option");
 
@@ -150,23 +147,24 @@ LRESULT CALLBACK ChildWndProc(HWND hwnd, UINT iMsg,
 		hdc = BeginPaint(hwnd, &ps);
 		memdc = CreateCompatibleDC(hdc);
 		hBG = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_BG));
+		
 
 
 
 		//배경 이미지 출력
 		SelectObject(memdc, hBG);
-		StretchBlt(hdc, 0, 0, PRINT_X, PRINT_Y-57, memdc, 0, 0, 605, 432, SRCCOPY);
+		StretchBlt(hdc, 0, 0, PRINT_X, PRINT_Y, memdc, 0, 0, 1200, 800, SRCCOPY);
 
 		//펜 설정 및 펜사용 부분
 		HPEN hPen, oldPen;
 		HBRUSH hBrush, oldBrush;
 
-		hPen = CreatePen(PS_SOLID, 3, RGB(125, 88, 84));
+		hPen = CreatePen(PS_SOLID, 3, RGB(204, 204, 204));
 		oldPen = (HPEN)SelectObject(hdc, hPen);
 
-		hBrush = CreateSolidBrush(RGB(249, 235, 222));
+		hBrush = CreateSolidBrush(RGB(255, 255, 255));
 		oldBrush = (HBRUSH)SelectObject(hdc, hBrush);
-		Rectangle(hdc, 10, 10, 100, 50);
+		//Rectangle(hdc, 10, 10, 100, 50);
 
 		SelectObject(hdc, oldPen);
 		DeleteObject(hPen);
@@ -175,24 +173,30 @@ LRESULT CALLBACK ChildWndProc(HWND hwnd, UINT iMsg,
 
 
 		//폰트설정 및 글씨 사용부분
-		font = CreateFont(30, 0, 0, 0, FW_BOLD, 0, 0, 0, HANGUL_CHARSET, 3, 2, 1, VARIABLE_PITCH | FF_ROMAN, TEXT("COOKIERUN BLACK"));
+		/*/
+		AddFontResource("SCDream4.otf");
+
+		font = CreateFont(30, 0, 0, 0, FW_BOLD, 0, 0, 0, HANGUL_CHARSET, 3, 2, 1, VARIABLE_PITCH | FF_ROMAN, TEXT("에스코어 드림 4 Regular"));
 		oldfont = (HFONT)SelectObject(hdc, font);
 
 		SetBkMode(hdc, TRANSPARENT);
-		SetTextColor(hdc, RGB(125, 88, 84));
+		SetTextColor(hdc, RGB(0, 0, 0));
 
 		TextOut(hdc, 17, 15, _T("옷 출력"), _tcslen(_T("옷 출력")));
 
 		SelectObject(hdc, oldfont);
 		DeleteObject(font);
-		RemoveFontResource(fontaddress);
-
+		RemoveFontResource("SCDream4.otf");
+		*/
 
 		//기본 옷 출력
 
+		if (hBase == NULL) {
+			hBase = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_S_0));
+		}
 		SelectObject(memdc, hBase);
 
-		TransparentBlt(hdc, (PRINT_X/2)-200, (PRINT_Y/2)-200, 400, 400, memdc, 0, 0, 800, 700, RGB(42, 255, 0));
+		TransparentBlt(hdc, (PRINT_X/2)-300, (PRINT_Y/2)-320, 600, 600, memdc, 0, 0, 800, 700, RGB(42, 255, 0));
 
 		//쓰레기통 출력
 		if (CanTrash)
@@ -222,6 +226,10 @@ LRESULT CALLBACK ChildWndProc(HWND hwnd, UINT iMsg,
 
 	case WM_COMMAND:
 		switch (LOWORD(wParam)) {
+
+		case IDM_EXIT:
+			PostQuitMessage(0);
+			break;
 		case ID_S_0:
 			hBase = LoadBitmap(hInst,
 				MAKEINTRESOURCE(IDB_S_0));
@@ -256,6 +264,7 @@ LRESULT CALLBACK ChildWndProc(HWND hwnd, UINT iMsg,
 			PRICE_CLOTHES = 10000;
 			InvalidateRgn(hwnd, NULL, true);
 			InvalidateRgn(Option, NULL, true);
+			break;
 		case ID_TS_2:
 			hBase = LoadBitmap(hInst,
 				MAKEINTRESOURCE(IDB_TS_2));
@@ -276,6 +285,7 @@ LRESULT CALLBACK ChildWndProc(HWND hwnd, UINT iMsg,
 			PRICE_CLOTHES = 35000;
 			InvalidateRgn(hwnd, NULL, true);
 			InvalidateRgn(Option, NULL, true);
+			break;
 		case ID_P_2:
 			hBase = LoadBitmap(hInst,
 				MAKEINTRESOURCE(IDB_P_2));
@@ -296,6 +306,7 @@ LRESULT CALLBACK ChildWndProc(HWND hwnd, UINT iMsg,
 			PRICE_CLOTHES = 30000;
 			InvalidateRgn(hwnd, NULL, true);
 			InvalidateRgn(Option, NULL, true);
+			break;
 		case ID_SK_2:
 			hBase = LoadBitmap(hInst,
 				MAKEINTRESOURCE(IDB_SK_2));
@@ -410,6 +421,9 @@ LRESULT CALLBACK ChildWndProc2(HWND hwnd, UINT iMsg,
 
 	HWND Print = ::FindWindow(NULL, "Print");
 
+	static HBITMAP hBG2;
+
+
 	switch (iMsg)
 	{
 
@@ -419,6 +433,14 @@ LRESULT CALLBACK ChildWndProc2(HWND hwnd, UINT iMsg,
 	case WM_PAINT:
 		hdc = BeginPaint(hwnd, &ps);
 		memdc = CreateCompatibleDC(hdc);
+		hBG2 = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_BG2));
+
+
+		//배경 이미지 출력
+		SelectObject(memdc, hBG2);
+		StretchBlt(hdc, 0, 0, OPTION_X, OPTION_Y, memdc, 0, 0, 501, 800, SRCCOPY);
+
+
 
 		SubViewFrame(hdc);          //비트맵 배경 순차 출력입니다.
 		SubViewBitmap(hdc, memdc);  //비트맵 순차 출력입니다.
@@ -439,14 +461,14 @@ LRESULT CALLBACK ChildWndProc2(HWND hwnd, UINT iMsg,
 		else if (140 <= mx && mx <= 240 && 160 <= my && my <= 260)ACC_NUM = 6;
 		else if (245 <= mx && mx <= 350 && 160 <= my && my <= 260)ACC_NUM = 7;
 		else if (355 <= mx && mx <= 460 && 160 <= my && my <= 260)ACC_NUM = 8;
-		else if (35 <= mx && mx <= 135 && 325 <= my && my <= 375)CHANGECOLOR(RGB(240, 80, 80));
-		else if (140 <= mx && mx <= 240 && 325 <= my && my <= 375)CHANGECOLOR(RGB(0, 255, 0));
-		else if (245 <= mx && mx <= 350 && 325 <= my && my <= 375)CHANGECOLOR(RGB(127, 255, 212));
-		else if (355 <= mx && mx <= 460 && 325 <= my && my <= 375)CHANGECOLOR(RGB(255, 255, 255));
-		else if (35 <= mx && mx <= 135 && 380 <= my && my <= 430)CHANGECOLOR(RGB(211, 211, 211));
-		else if (140 <= mx && mx <= 240 && 380 <= my && my <= 430)CHANGECOLOR(RGB(255, 215, 0));
-		else if (245 <= mx && mx <= 350 && 380 <= my && my <= 430)CHANGECOLOR(RGB(238, 82, 238));
-		else if (355 <= mx && mx <= 460 && 380 <= my && my <= 430)CHANGECOLOR(RGB(255, 255, 240));
+		else if (60 <= mx && mx <= 100 && 340 <= my && my <= 380)CHANGECOLOR(RGB(240, 80, 80));
+		else if (175 <= mx && mx <= 205 && 340 <= my && my <= 380)CHANGECOLOR(RGB(0, 255, 0));
+		else if (280 <= mx && mx <= 310 && 340 <= my && my <= 380)CHANGECOLOR(RGB(127, 255, 212));
+		else if (385 <= mx && mx <= 415 && 340 <= my && my <= 380)CHANGECOLOR(RGB(255, 255, 255));
+		else if (60 <= mx && mx <= 100 && 395 <= my && my <= 435)CHANGECOLOR(RGB(211, 211, 211));
+		else if (175 <= mx && mx <= 205 && 395 <= my && my <= 435)CHANGECOLOR(RGB(255, 215, 0));
+		else if (280 <= mx && mx <= 310 && 395 <= my && my <= 435)CHANGECOLOR(RGB(238, 82, 238));
+		else if (385 <= mx && mx <= 415 && 395 <= my && my <= 435)CHANGECOLOR(RGB(255, 255, 240));
 
 		SendMessage(Print, WM_COPYDATA, 0, ACC_NUM);
 		InvalidateRgn(hwnd, NULL, true);
@@ -468,32 +490,85 @@ void SubViewFrame(HDC hdc) {
 	HPEN hPen, oldPen;
 	HBRUSH hBrush, oldBrush;
 
-	hPen = CreatePen(PS_SOLID, 3, RGB(125, 88, 84));
+	hPen = CreatePen(PS_SOLID, 3, RGB(204, 204, 204));
 	oldPen = (HPEN)SelectObject(hdc, hPen);
 
-	hBrush = CreateSolidBrush(RGB(249, 235, 222));
+	hBrush = CreateSolidBrush(RGB(255, 255, 255));
 	oldBrush = (HBRUSH)SelectObject(hdc, hBrush);
 
 	//악세서리
 	Rectangle(hdc, 35, 10, 450, 50);
+	Rectangle(hdc, 35, 280, 450, 320);
+	Rectangle(hdc, 35, 450, 450, 490);
+
+
+	hPen = CreatePen(PS_SOLID, 3, RGB(240, 240, 240));
+	oldPen = (HPEN)SelectObject(hdc, hPen);
+
+	hBrush = CreateSolidBrush(RGB(220, 220, 220));
+	oldBrush = (HBRUSH)SelectObject(hdc, hBrush);
 
 	for (int y = 0; y < 2; y++) {
 		for (int x = 0; x < 4; x++) {
-			Rectangle(hdc, 35 + 105 * x, 55 + 105 * y, 135 + 105 * x, 155 + 105 * y);
+			Ellipse(hdc, 40 + 105 * x, 60 + 105 * y, 130 + 105 * x, 150 + 105 * y);
 		}
 	}
 
 	//염색
-	Rectangle(hdc, 35, 280, 450, 320);
+	int i = 0;
+	int r = 0;
+	int g = 0;
+	int b = 0;
 
 	for (int y = 0; y < 2; y++) {
 		for (int x = 0; x < 4; x++) {
-			Rectangle(hdc, 35 + 105 * x, 325 + 55 * y, 135 + 105 * x, 375 + 55 * y);
+			switch (i)
+			{
+			case 0:
+				r = 240;g = 80;b = 80;
+				break;
+			case 1:
+				r = 0;g = 255;b = 0;
+				break;
+			case 2:
+				r = 127;g = 255;b = 212;
+				break;
+			case 3:
+				r = 255;g = 255;b = 255;
+				break;
+			case 4:
+				r = 211;g = 211;b = 211;
+				break;
+			case 5:
+				r = 255;g = 215;b = 0;
+				break;
+			case 6:
+				r = 238;g = 82;b = 238;
+				break;
+			case 7:
+				r = 255;g = 255;b = 240;
+				break;
+			}
+			
+			hPen = CreatePen(PS_SOLID, 3, RGB(204, 204, 204));
+			oldPen = (HPEN)SelectObject(hdc, hPen);
+
+			hBrush = CreateSolidBrush(RGB(r, g, b));
+			oldBrush = (HBRUSH)SelectObject(hdc, hBrush);
+
+			Ellipse(hdc, 60 + 105 * x, 340 + 55 * y, 100 + 105 * x, 380 + 55 * y);
+			i++;
+
 		}
 	}
 
 	//계산
-	Rectangle(hdc, 35, 450, 450, 490);
+
+	hPen = CreatePen(PS_SOLID, 3, RGB(204, 204, 204));
+	oldPen = (HPEN)SelectObject(hdc, hPen);
+
+	hBrush = CreateSolidBrush(RGB(255, 255, 255));
+	oldBrush = (HBRUSH)SelectObject(hdc, hBrush);
 
 	for (int y = 0; y < 2; y++) {
 		for (int x = 0; x < 2; x++) {
@@ -513,6 +588,7 @@ void SubViewFrame(HDC hdc) {
 
 void SubViewBitmap(HDC hdc, HDC memdc) {
 	static HBITMAP hBitmap;
+
 
 	hBitmap = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_acc1));
 	SelectObject(memdc, hBitmap);
@@ -549,12 +625,10 @@ void SubViewBitmap(HDC hdc, HDC memdc) {
 
 void SubViewFont(HDC hdc) {
 	HFONT font, oldfont;
-	char fontaddress[] = "COOKIERUN BLACK.TTF";
 
-	AddFontResource(fontaddress);
-	SendMessage(HWND_BROADCAST, WM_FONTCHANGE, 0, 0);
+	AddFontResource("SCDream4.otf");
 
-	font = CreateFont(30, 0, 0, 0, FW_BOLD, 0, 0, 0, HANGUL_CHARSET, 3, 2, 1, VARIABLE_PITCH | FF_ROMAN, TEXT("COOKIERUN BLACK"));
+	font = CreateFont(30, 0, 0, 0, FW_BOLD, 0, 0, 0, HANGUL_CHARSET, 3, 2, 1, VARIABLE_PITCH | FF_ROMAN, TEXT("에스코어 드림 4 Regular"));
 	oldfont = (HFONT)SelectObject(hdc, font);
 
 	SetBkMode(hdc, TRANSPARENT);
@@ -562,32 +636,35 @@ void SubViewFont(HDC hdc) {
 	TextOut(hdc, 200, 15, _T("악세서리"), _tcslen(_T("악세서리")));
 
 	TextOut(hdc, 220, 285, _T("염색"), _tcslen(_T("염색")));
-
-	TextOut(hdc, 60, 335, _T("Coral"), _tcslen(_T("Coral")));
-	TextOut(hdc, 160, 335, _T("Lime"), _tcslen(_T("Lime")));
+	/*
+	TextOut(hdc, 55, 335, _T("Coral"), _tcslen(_T("Coral")));
+	TextOut(hdc, 165, 335, _T("Lime"), _tcslen(_T("Lime")));
 	TextOut(hdc, 265, 335, _T("Aqua"), _tcslen(_T("Aqua")));
 	TextOut(hdc, 365, 335, _T("White"), _tcslen(_T("White")));
 	TextOut(hdc, 60, 390, _T("Grey"), _tcslen(_T("Grey")));
-	TextOut(hdc, 160, 390, _T("Gold"), _tcslen(_T("Gold")));
+	TextOut(hdc, 165, 390, _T("Gold"), _tcslen(_T("Gold")));
 	TextOut(hdc, 265, 390, _T("Violet"), _tcslen(_T("Violet")));
 	TextOut(hdc, 370, 390, _T("Ivory"), _tcslen(_T("Ivory")));
+	*/
 
 	TextOut(hdc, 220, 455, _T("계산"), _tcslen(_T("계산")));
-	TextOut(hdc, 100, 500, _T("의상 비용"), _tcslen(_T("의상 비용")));
-	TextOut(hdc, 290, 500, _T("악세서리 비용"), _tcslen(_T("악세서리 비용")));
+
+	SetTextAlign(hdc, TA_RIGHT);
+	TextOut(hdc, 205, 500, _T("의상 비용"), _tcslen(_T("의상 비용")));
+	TextOut(hdc, 415, 500, _T("악세서리 비용"), _tcslen(_T("악세서리 비용")));
 	CString str, str1, str2;
+
 	str.Format("%d", PRICE_CLOTHES);
 	str1.Format("%d", COST_ACC);
 	str2.Format("%d", PRICE_CLOTHES + COST_ACC);
-	SetTextAlign(hdc, TA_RIGHT);
-	TextOut(hdc, 200, 545, str, _tcslen(str));
-	TextOut(hdc, 410, 545, str1, _tcslen(str1));
-	TextOut(hdc, 400, 610, str2, _tcslen(str2));
+
+	TextOut(hdc, 205, 545, str, _tcslen(str));
+	TextOut(hdc, 415, 545, str1, _tcslen(str1));
+	TextOut(hdc, 415, 610, str2, _tcslen(str2));
 
 
 	SelectObject(hdc, oldfont);
 	DeleteObject(font);
-	RemoveFontResource(fontaddress);
 }
 
 HBITMAP ScreenCapture() {
@@ -598,12 +675,12 @@ HBITMAP ScreenCapture() {
 	// device context에 넣기
 	HDC hMemoryDC = CreateCompatibleDC(hScreenDC);
 
-	HBITMAP hBitmap = CreateCompatibleBitmap(hScreenDC, width, height);
+	HBITMAP hBitmap = CreateCompatibleBitmap(hScreenDC, 700, 500);
 
 	// 새로운 비트맵 생성
 	HBITMAP hOldBitmap = (HBITMAP)SelectObject(hMemoryDC, hBitmap);
 
-	BitBlt(hMemoryDC, 0, 0, width, height, hScreenDC, 400,400, SRCCOPY);		//스크린샷을 할 특정 위치
+	BitBlt(hMemoryDC, -255, -180, 955, 680, hScreenDC, 0, 0, SRCCOPY);		//스크린샷을 할 특정 위치
 	hBitmap = (HBITMAP)SelectObject(hMemoryDC, hOldBitmap);
 
 	DeleteDC(hMemoryDC);

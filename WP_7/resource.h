@@ -39,6 +39,8 @@
 #define IDB_BITMAP3                     159
 #define IDB_BG                          160
 #define IDR_WAVE1                       161
+#define IDB_BITMAP1                     163
+#define IDB_BG2                         163
 #define ID_FILENEW                      32771
 #define ID_32772                        32772
 #define ID_shirts                       32773
@@ -80,7 +82,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NO_MFC                     1
-#define _APS_NEXT_RESOURCE_VALUE        163
+#define _APS_NEXT_RESOURCE_VALUE        164
 #define _APS_NEXT_COMMAND_VALUE         32805
 #define _APS_NEXT_CONTROL_VALUE         1001
 #define _APS_NEXT_SYMED_VALUE           110
