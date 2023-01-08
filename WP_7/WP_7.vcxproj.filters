@@ -204,6 +204,18 @@
     <Image Include="2.bmp">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="clothes\icon1.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="clothes\icon2.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="WP_logo.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="WP_logo.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Media Include="메이플스토리-엘리니아 (mp3cut.net).wav">

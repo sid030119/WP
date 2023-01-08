@@ -1,24 +1,17 @@
 ﻿  WP_7.cpp
-C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(184,67): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(326,13): warning C4244: '=': 'LPARAM'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(123,8): warning C4101: 'ptMouse' :참조되지 않은 지역 변수입니다.
-C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(135,9): warning C4101: 'bmp' :참조되지 않은 지역 변수입니다.
-C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(562,71): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(564,60): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(566,57): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(567,56): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(568,56): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(569,58): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(570,55): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(571,56): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(572,60): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(573,58): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(575,60): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(576,74): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(577,86): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(583,42): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(584,44): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\sid03\Documents\GitHub\WP\WP_7\WP_7.cpp(585,44): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\50\program\WP\WP_7\WP_7.cpp(336,13): warning C4244: '=': 'LPARAM'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\50\program\WP\WP_7\WP_7.cpp(139,8): warning C4101: 'font' :참조되지 않은 지역 변수입니다.
+D:\50\program\WP\WP_7\WP_7.cpp(139,14): warning C4101: 'oldfont' :참조되지 않은 지역 변수입니다.
+D:\50\program\WP\WP_7\WP_7.cpp(123,8): warning C4101: 'ptMouse' :참조되지 않은 지역 변수입니다.
+D:\50\program\WP\WP_7\WP_7.cpp(135,9): warning C4101: 'bmp' :참조되지 않은 지역 변수입니다.
+D:\50\program\WP\WP_7\WP_7.cpp(635,71): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\50\program\WP\WP_7\WP_7.cpp(637,60): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\50\program\WP\WP_7\WP_7.cpp(649,60): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\50\program\WP\WP_7\WP_7.cpp(652,74): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\50\program\WP\WP_7\WP_7.cpp(653,86): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\50\program\WP\WP_7\WP_7.cpp(660,42): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\50\program\WP\WP_7\WP_7.cpp(661,44): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\50\program\WP\WP_7\WP_7.cpp(662,44): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   코드를 생성하고 있습니다.
   코드를 생성했습니다.
-  WP_7.vcxproj -> C:\Users\sid03\Documents\GitHub\WP\x64\Release\WP_7.exe
+  WP_7.vcxproj -> D:\50\program\WP\x64\Release\WP_7.exe

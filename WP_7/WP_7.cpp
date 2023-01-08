@@ -55,7 +55,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	WndClass.cbClsExtra = 0;
 	WndClass.cbWndExtra = 0;
 	WndClass.hInstance = hInstance;
-	WndClass.hIcon = LoadIcon(NULL, IDI_APPLICATION);
+	WndClass.hIcon = LoadIcon(NULL, MAKEINTRESOURCE(IDI_logo));
 	WndClass.hCursor = LoadCursor(NULL, IDC_ARROW);
 	WndClass.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);
 	WndClass.lpszMenuName = MAKEINTRESOURCE(IDC_WP7);
@@ -219,7 +219,6 @@ LRESULT CALLBACK ChildWndProc(HWND hwnd, UINT iMsg,
 			TransparentBlt(hdc, acc[i].x, acc[i].y, 100, 100, memdc, 0, 0, 500, 500, RGB(42, 255, 0));
 			i++;
 		}
-
 		DeleteDC(memdc);
 		EndPaint(hwnd, &ps);
 		break;

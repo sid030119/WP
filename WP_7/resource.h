@@ -3,6 +3,7 @@
 // WP_7.rc에서 사용되고 있습니다.
 //
 #define IDC_MYICON                      2
+#define IDI_logo                        5
 #define IDD_WP7_DIALOG                  102
 #define IDS_APP_TITLE                   103
 #define IDD_ABOUTBOX                    103
@@ -82,7 +83,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NO_MFC                     1
-#define _APS_NEXT_RESOURCE_VALUE        164
+#define _APS_NEXT_RESOURCE_VALUE        168
 #define _APS_NEXT_COMMAND_VALUE         32805
 #define _APS_NEXT_CONTROL_VALUE         1001
 #define _APS_NEXT_SYMED_VALUE           110
