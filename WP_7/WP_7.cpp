@@ -57,7 +57,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	WndClass.hInstance = hInstance;
 	WndClass.hIcon = LoadIcon(NULL, MAKEINTRESOURCE(IDI_logo));
 	WndClass.hCursor = LoadCursor(NULL, IDC_ARROW);
-	WndClass.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);
+	WndClass.hbrBackground = CreateSolidBrush(RGB(236, 139, 94));
 	WndClass.lpszMenuName = MAKEINTRESOURCE(IDC_WP7);
 	WndClass.lpfnWndProc = ChildWndProc;
 	WndClass.lpszClassName = _T("Print");
@@ -66,7 +66,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	WndClass2 = WndClass;
 	WndClass2.lpszMenuName = NULL;
 	WndClass2.lpszClassName = _T("Option");
-	WndClass2.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);
+	WndClass2.hbrBackground = CreateSolidBrush(RGB(236, 139, 94));
 	WndClass2.lpfnWndProc = ChildWndProc2;
 	if (!RegisterClass(&WndClass2))return 1;
 
@@ -146,14 +146,14 @@ LRESULT CALLBACK ChildWndProc(HWND hwnd, UINT iMsg,
 	case WM_PAINT:
 		hdc = BeginPaint(hwnd, &ps);
 		memdc = CreateCompatibleDC(hdc);
-		hBG = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_BG));
+		//hBG = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_BG));
 		
 
 
 
 		//배경 이미지 출력
-		SelectObject(memdc, hBG);
-		StretchBlt(hdc, 0, 0, PRINT_X, PRINT_Y, memdc, 0, 0, 1200, 800, SRCCOPY);
+		//SelectObject(memdc, hBG);
+		//StretchBlt(hdc, 0, 0, PRINT_X, PRINT_Y, memdc, 0, 0, 1200, 800, SRCCOPY);
 
 		//펜 설정 및 펜사용 부분
 		HPEN hPen, oldPen;
@@ -170,7 +170,7 @@ LRESULT CALLBACK ChildWndProc(HWND hwnd, UINT iMsg,
 		DeleteObject(hPen);
 		SelectObject(hdc, oldBrush);
 		DeleteObject(hBrush);
-
+		
 
 		//폰트설정 및 글씨 사용부분
 		/*/
@@ -188,6 +188,32 @@ LRESULT CALLBACK ChildWndProc(HWND hwnd, UINT iMsg,
 		DeleteObject(font);
 		RemoveFontResource("SCDream4.otf");
 		*/
+
+		// 타이틀 출력
+		AddFontResource("Voga-Medium.otf");
+
+
+		font = CreateFont(50, 0, 0, 0, FW_NORMAL, 0, 0, 0, DEFAULT_CHARSET, 3, 2, 1, VARIABLE_PITCH | FF_ROMAN, TEXT("Voga-Medium"));
+		oldfont = (HFONT)SelectObject(hdc, font);
+		SetBkMode(hdc, TRANSPARENT);
+		SetTextColor(hdc, RGB(20, 26, 70));
+		TextOut(hdc, 540, 15, _T("Dress Up !"), _tcslen(_T("Dress Up !")));
+
+
+
+
+		//하얀 배경 출력
+		hPen = CreatePen(PS_SOLID, 3, RGB(255, 255, 255));
+		oldPen = (HPEN)SelectObject(hdc, hPen);
+
+		hBrush = CreateSolidBrush(RGB(255, 255, 255));
+		oldBrush = (HBRUSH)SelectObject(hdc, hBrush);
+		
+	
+		Rectangle(hdc, 150, 100, 1020, 640);
+
+		
+
 
 		//기본 옷 출력
 
@@ -432,12 +458,12 @@ LRESULT CALLBACK ChildWndProc2(HWND hwnd, UINT iMsg,
 	case WM_PAINT:
 		hdc = BeginPaint(hwnd, &ps);
 		memdc = CreateCompatibleDC(hdc);
-		hBG2 = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_BG2));
+		//hBG2 = LoadBitmap(hInst, MAKEINTRESOURCE(IDB_BG2));
 
 
 		//배경 이미지 출력
-		SelectObject(memdc, hBG2);
-		StretchBlt(hdc, 0, 0, OPTION_X, OPTION_Y, memdc, 0, 0, 501, 800, SRCCOPY);
+		//SelectObject(memdc, hBG2);
+		//StretchBlt(hdc, 0, 0, OPTION_X, OPTION_Y, memdc, 0, 0, 501, 800, SRCCOPY);
 
 
 
@@ -489,13 +515,14 @@ void SubViewFrame(HDC hdc) {
 	HPEN hPen, oldPen;
 	HBRUSH hBrush, oldBrush;
 
-	hPen = CreatePen(PS_SOLID, 3, RGB(204, 204, 204));
+	hPen = CreatePen(PS_SOLID, 3, RGB(236, 139, 94));
 	oldPen = (HPEN)SelectObject(hdc, hPen);
 
 	hBrush = CreateSolidBrush(RGB(255, 255, 255));
 	oldBrush = (HBRUSH)SelectObject(hdc, hBrush);
 
 	//악세서리
+
 	Rectangle(hdc, 35, 10, 450, 50);
 	Rectangle(hdc, 35, 280, 450, 320);
 	Rectangle(hdc, 35, 450, 450, 490);
@@ -563,7 +590,7 @@ void SubViewFrame(HDC hdc) {
 
 	//계산
 
-	hPen = CreatePen(PS_SOLID, 3, RGB(204, 204, 204));
+	hPen = CreatePen(PS_SOLID, 3, RGB(236, 139, 94));
 	oldPen = (HPEN)SelectObject(hdc, hPen);
 
 	hBrush = CreateSolidBrush(RGB(255, 255, 255));
@@ -627,11 +654,11 @@ void SubViewFont(HDC hdc) {
 
 	AddFontResource("SCDream4.otf");
 
-	font = CreateFont(30, 0, 0, 0, FW_BOLD, 0, 0, 0, HANGUL_CHARSET, 3, 2, 1, VARIABLE_PITCH | FF_ROMAN, TEXT("에스코어 드림 4 Regular"));
+	font = CreateFont(30, 0, 0, 0, FW_NORMAL, 0, 0, 0, HANGUL_CHARSET, 3, 2, 1, VARIABLE_PITCH | FF_ROMAN, TEXT("에스코어 드림 4 Regular"));
 	oldfont = (HFONT)SelectObject(hdc, font);
 
 	SetBkMode(hdc, TRANSPARENT);
-	SetTextColor(hdc, RGB(125, 88, 84));
+	SetTextColor(hdc, RGB(0, 0, 0));
 	TextOut(hdc, 200, 15, _T("악세서리"), _tcslen(_T("악세서리")));
 
 	TextOut(hdc, 220, 285, _T("염색"), _tcslen(_T("염색")));
